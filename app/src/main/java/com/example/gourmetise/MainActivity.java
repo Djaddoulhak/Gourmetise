@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.boutonImport:
                     Log.i("info", "ok");
                     // Requête HTTP GET
-                    String urlI = "http://10.0.2.2/ANTHONY/GOURMETISEPROJET/API/Boulangerie.php";
+                    String urlI = "http://10.0.2.2/Mhoumadi/projetgourmetise/API/Boulangerie.php";
                     AsyncHttpClient requestI = new AsyncHttpClient();
                     requestI.get(urlI, new JsonHttpResponseHandler() {
                         @Override
