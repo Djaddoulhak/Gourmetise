@@ -24,6 +24,8 @@ public class Boulangerie {
 
     }
 
+
+
     public String getSiren() {return siren;}
     public void setSiren(String siren) {this.siren = siren;}
 
@@ -59,4 +61,7 @@ public class Boulangerie {
                 '}';
     }
 }
+
+
+
 

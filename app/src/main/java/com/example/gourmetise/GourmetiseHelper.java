@@ -22,8 +22,18 @@ public class GourmetiseHelper extends SQLiteOpenHelper {
                 + "code_postal TEXT NOT NULL,"
                 + "descriptif TEXT NOT NULL);");
 
-
+        db.execSQL("CREATE TABLE Evaluation ("
+                + "code_unique TEXT NOT NULL PRIMARY KEY,"
+                + "date_evaluation TEXT NOT NULL,"
+                + "note_critere1 INTEGER NOT NULL,"
+                + "note_critere2 INTEGER NOT NULL,"
+                + "note_critere3 INTEGER NOT NULL,"
+                + "siren TEXT NOT NULL,"
+                + "FOREIGN KEY(siren) REFERENCES Boulangerie(siren));");
     }
+
+
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS Boulangerie;");

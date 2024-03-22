@@ -13,10 +13,14 @@ public class GourmetiseDAO<Boulangerie> {
         maBase = monHelper.getWritableDatabase();
     }
 
+
+
     public Cursor LesBoulangeries() {
         Cursor curseurContact = maBase.rawQuery("SELECT siren, nom, rue, ville, code_postal,descriptif from Boulangerie " , new String[] {});
         return curseurContact;
     }
+
+
 
 
     public void ajouterBoulangerie(com.example.gourmetise.Boulangerie uneBoulangerie) {
@@ -33,10 +37,27 @@ public class GourmetiseDAO<Boulangerie> {
 
     }
 
+    public void ajouterEvaluation (com.example.gourmetise.Evaluation uneEvaluation ) {
+
+        // Création d'un ContentValues pour ajouter les valeurs
+        ContentValues v = new ContentValues();
+
+        v.put("code_unique", (String) uneEvaluation.getCodeUnique());
+        v.put("date_evaluation", (String) uneEvaluation.getDateEvaluation());
+        v.put("note_critere1",  uneEvaluation.getNoteCritere1());
+        v.put("note_critere2",  uneEvaluation.getNoteCritere2());
+        v.put("note_critere3",  uneEvaluation.getNoteCritere3());
+        v.put("siren", (String) uneEvaluation.getSirenBoulangerie());
+        maBase.insert("Evaluation", null, v);
+    }
+
     public void supprimerTous() {
         maBase.delete("Boulangerie",null,null);
     }
 
+    public void supprimerToutesEvaluations() {
+        maBase.delete("Evaluation", null, null);
+    }
 
 
 }
