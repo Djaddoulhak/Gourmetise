@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 public class GourmetiseHelper extends SQLiteOpenHelper {
     public GourmetiseHelper(@Nullable Context context)
     {
-        super(context, "baseGourmetise.db", null, 1);
+        super(context, "baseGourmetise.db", null, 2);
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -37,6 +37,7 @@ public class GourmetiseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS Boulangerie;");
+        db.execSQL("DROP TABLE IF EXISTS Evaluation;");
         onCreate(db);
     }
 }
