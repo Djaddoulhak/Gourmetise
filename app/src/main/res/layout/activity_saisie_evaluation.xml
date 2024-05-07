@@ -1,0 +1,102 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Logo de la boulangerie -->
+
+    <!-- Titre de l'évaluation -->
+    <ImageView
+        android:layout_width="74dp"
+        android:layout_height="65dp"
+        android:layout_gravity="center"
+        android:src="@drawable/gourmetiseoff" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Évaluation"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:layout_marginTop="24dp"/>
+
+    <!--Nom Boulangerie-->
+    <EditText
+        android:id="@+id/nom_boulangerie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint=" Boulangerie :" />
+
+    <!-- Date d'évaluation -->
+    <EditText
+        android:id="@+id/date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Date : JJ/MM/AA"
+        android:enabled="false"/>
+
+    <!--Code Evaluation -->
+    <EditText
+        android:id="@+id/code_unique"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Code unique :" />
+
+
+
+    <!-- Section pour l'accueil -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Accueil" />
+    <RatingBar
+        android:id="@+id/note_accueil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:maxLength="1"
+        android:hint="Note sur 5" />
+
+    <!-- Section pour la présentation de la boutique -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Présentation de la boutique" />
+    <RatingBar
+        android:id="@+id/note_presentation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:maxLength="1"
+        android:hint="Note sur 5" />
+
+    <!-- Section pour la qualité des produits -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Qualité des produits" />
+    <RatingBar
+        android:id="@+id/note_qualite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:maxLength="1"
+        android:hint="Note sur 5" />
+
+    <!-- Instructions pour l'évaluation -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Veuillez attribuer une note entre 1 et 5 pour chaque critère d'évaluation, 1 étant le plus faible et 5 le plus élevé."
+        android:layout_marginTop="30dp"/>
+
+    <!-- Bouton pour valider l'évaluation -->
+    <Button
+        android:id="@+id/valider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Valider"
+        android:layout_marginTop="24dp"/>
+</LinearLayout>
