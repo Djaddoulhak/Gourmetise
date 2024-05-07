@@ -2,6 +2,9 @@
     <string name="app_name">Gourmetise</string>
     <string name="Lib_liste">Liste</string>
     <string name="libImport">IMPORTER</string>
+    <string name="libValider">VALIDER</string>
+    <string name="libEvaluation">EVALUATION</string>
+    <string name="instructions" />
 
 
 </resources>
