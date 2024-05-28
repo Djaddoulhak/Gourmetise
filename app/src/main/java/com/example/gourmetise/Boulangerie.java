@@ -10,8 +10,6 @@ public class Boulangerie {
     private  String descriptif;
 
 
-
-
     public Boulangerie() {
 
         this.siren="";
@@ -21,9 +19,7 @@ public class Boulangerie {
         this.code_postal="";
         this.descriptif="";
 
-
     }
-
 
 
     public String getSiren() {return siren;}

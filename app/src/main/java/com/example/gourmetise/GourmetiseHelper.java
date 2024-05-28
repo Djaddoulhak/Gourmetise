@@ -8,8 +8,9 @@ import androidx.annotation.Nullable;
 public class GourmetiseHelper extends SQLiteOpenHelper {
     public GourmetiseHelper(@Nullable Context context)
     {
-        super(context, "baseGourmetise.db", null, 2);
+        super(context, "baseGourmetise.db", null, 3);
     }
+
     @Override
     public void onCreate(SQLiteDatabase db) {
 // création des tables de la base embarquée
@@ -32,13 +33,13 @@ public class GourmetiseHelper extends SQLiteOpenHelper {
                 + "FOREIGN KEY(siren) REFERENCES Boulangerie(siren));");
     }
 
-
-
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS Boulangerie;");
         db.execSQL("DROP TABLE IF EXISTS Evaluation;");
         onCreate(db);
     }
+
+
 }
 

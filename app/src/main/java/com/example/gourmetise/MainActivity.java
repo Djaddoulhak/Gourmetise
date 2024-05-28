@@ -36,6 +36,12 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<String> NomBoulangerie = new ArrayList<String>();
     private Button btnIMPORT = null;
 
+    private Button btnValider = null;
+    private EditText editTextSirenBoulangerie;
+    private EditText editTextNoteCritere1;
+    private EditText editTextNoteCritere2;
+    private EditText editTextNoteCritere3;
+
 
     GourmetiseDAO bdd;
 
@@ -44,11 +50,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // obtention des références sur les vues de l'activité
+
+        // Initialisation des composants
         btnIMPORT = (Button) findViewById(R.id.boutonImport);
         spinnerBoulangerie = (Spinner)findViewById(R.id.list_boulangerie);
+        btnValider = (Button) findViewById(R.id.boutonValider);
 
+        //Configuration des écouteurs de boutons
         btnIMPORT.setOnClickListener(EcouteurBouton);
+        btnValider.setOnClickListener(EcouteurBouton);
     }
     public void chargerSpinner() {
         bdd = new GourmetiseDAO(MainActivity.this);
@@ -61,6 +71,9 @@ public class MainActivity extends AppCompatActivity {
         curseurTous.close();
         spinnerBoulangerie.setAdapter(new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_spinner_item, NomBoulangerie));
     }
+
+
+
     public View.OnClickListener EcouteurBouton = new View.OnClickListener() {
         @SuppressLint("Range")
         @Override
@@ -69,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.boutonImport:
                     Log.i("info", "ok");
                     // Requête HTTP GET
-                    String urlI = "http://10.0.2.2/Mhoumadi/projetgourmetise/API/Boulangerie.php";
+                    String urlI = "http://10.0.2.2/ANTHONYDJADDOU/GOURMETISEPROJET/API/Boulangerie.php";
                     AsyncHttpClient requestI = new AsyncHttpClient();
                     requestI.get(urlI, new JsonHttpResponseHandler() {
                         @Override
@@ -113,8 +126,24 @@ public class MainActivity extends AppCompatActivity {
                             Log.i("Erreur", String.valueOf(statusCode) + "Erreur = " + responseString);
                             Toast.makeText(getApplicationContext(), "Echec de l'importation", Toast.LENGTH_LONG).show();
                         }
+
+
                     });
+                    break;
+
+                case R.id.boutonValider:
+                    String nomBoulangerie =  spinnerBoulangerie.getSelectedItem().toString();
+                    Intent evalActivity = new Intent (MainActivity.this, SaisieEvaluation.class);
+                    evalActivity.putExtra("nom_boulangerie", nomBoulangerie);
+                    startActivity(evalActivity);
+                    Log.i("testest", "test");
+
+                    // Ici, insérez le code pour sauvegarder `evaluation` dans une base de données ou l'envoyer à un serveur
+                    break;
+                }
             }
-        }
-    };
+        };
+
+
+
 }

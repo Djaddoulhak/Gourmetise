@@ -48,9 +48,7 @@ public class SaisieEvaluation extends AppCompatActivity {
         // Configuration du listener pour le bouton
         validerButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                validerEvaluation();
-            }
+            public void onClick(View v) {validerEvaluation();}
         });
     }
 

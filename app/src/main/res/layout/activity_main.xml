@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="50dp"
-        android:text="Séléctionner une boulnagerie"
+        android:text="Séléctionner une boulangerie"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
     <LinearLayout
@@ -64,14 +64,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Valider"
+            android:text="@string/libValider"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:layout_margin="25dp" />
     </FrameLayout>
-
-
-
-
-
 
 </LinearLayout>

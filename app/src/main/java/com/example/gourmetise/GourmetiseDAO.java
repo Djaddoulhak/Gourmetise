@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+
 public class GourmetiseDAO<Boulangerie> {
     private SQLiteDatabase maBase;
     private GourmetiseHelper monHelper;
@@ -21,8 +22,6 @@ public class GourmetiseDAO<Boulangerie> {
     }
 
 
-
-
     public void ajouterBoulangerie(com.example.gourmetise.Boulangerie uneBoulangerie) {
         //création d'un ContentValues
         ContentValues v = new ContentValues();
@@ -37,7 +36,13 @@ public class GourmetiseDAO<Boulangerie> {
 
     }
 
-    public void ajouterEvaluation (com.example.gourmetise.Evaluation uneEvaluation ) {
+
+    public boolean ajouterEvaluation (Evaluation uneEvaluation ) {
+
+        // Vérifier si le code unique est déjà utilisé
+        if (isCodeUniqueUsed(uneEvaluation.getCodeUnique())) {
+            return false;
+        }
 
         // Création d'un ContentValues pour ajouter les valeurs
         ContentValues v = new ContentValues();
@@ -47,9 +52,20 @@ public class GourmetiseDAO<Boulangerie> {
         v.put("note_critere1",  uneEvaluation.getNoteCritere1());
         v.put("note_critere2",  uneEvaluation.getNoteCritere2());
         v.put("note_critere3",  uneEvaluation.getNoteCritere3());
-        v.put("siren", (String) uneEvaluation.getSirenBoulangerie());
-        maBase.insert("Evaluation", null, v);
+
+        long resultat = maBase.insert("Evaluation", null, v);
+
+        return resultat != -1;
     }
+
+    //Vérifie si le code unique est deja utilisée
+    public boolean isCodeUniqueUsed(String codeUnique) {
+        Cursor cursor = maBase.rawQuery("SELECT 1 FROM Evaluation WHERE code_unique = ?", new String[]{codeUnique});
+        boolean exists = cursor.moveToFirst();
+        cursor.close();
+        return exists;
+    }
+
 
     public void supprimerTous() {
         maBase.delete("Boulangerie",null,null);
